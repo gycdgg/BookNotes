@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="canvas1"></canvas>
+  <canvas id = "canvas2"></canvas>
+</body>
+<script>
+  /*矩形*/
+  let canvas1 = document.getElementById("canvas1")
+  let context1 = canvas1.getContext("2d")
+  
+  context1.fillStyle='pink'
+  context1.strokeStyle = "blue"
+  context1.fillRect(0,0,50,50)
+  context1.strokeRect(70,0,30,30)
+  context1.strokeRect(120,0,50,50)
+  context1.clearRect(25, 25, 10, 10)
+  
+  /*圆形*/
+  let canvas2 = document.getElementById("canvas2")
+  let context2 = canvas2.getContext("2d")
+  canvas2.width = 500
+  canvas2.height = 500
+  context2.beginPath();
+  context2.arc(100,100,50,0,Math.PI*2,true)
+  context2.closePath();
+  context2.fillStyle = 'pink'
+  context2.fill()
+
+  /*圆弧*/
+  context2.beginPath();
+  context2.arc(200,200,50,0,Math.PI,true)
+  //context2.closePath();不加这一句就是弧形
+  context2.strokeStyle = 'blue'
+  context2.stroke()
+
+  /*线段*/
+  context2.strokeStyle = "green"
+  context2.moveTo(10, 300)
+  context2.lineTo(30, 300)
+  context2.moveTo(10, 300)
+  context2.lineTo(10, 340)
+  context2.moveTo(10, 320)
+  context2.lineTo(30, 320)
+  context2.moveTo(10, 340)
+  context2.lineTo(30, 340)
+  context2.stroke()
+  context2.closePath()
+  /* 构造多边形 */
+  const polygonCreator = (dx, dy, radius, num) => {
+    context2.beginPath();
+    context2.fillStyle = "pink"
+    context2.strokeStyle = "blue"
+    const perDegree = 2*Math.PI / num
+    for (let i = 0; i <= 2*num; i++) {
+      context2.lineTo(dx + radius / 2 * Math.cos(perDegree * (i)), dx + radius / 2 * Math.sin(perDegree * (i)))
+    }
+    context2.stroke()
+    context2.fill()
+    context2.closePath();
+  }
+
+  polygonCreator(200,200,100,6)
+  polygonCreator(400,400,100,7)
+</script>
+</html>

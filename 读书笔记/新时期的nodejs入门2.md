@@ -176,3 +176,25 @@ Child.prototype.getAge = function(){
 let child1 = new Child(25,"jim")
 let child2  = new Child(50,"green")
 ```
+方法5 class实现
+```js
+class Father {
+  constructor(name="father"){
+    this.name = name
+    this.work = [1,2,3]
+  }
+  getName(){
+    return this.name
+  }
+}
+
+class Child {
+  constructor(name,age){
+    super(name)
+    this.age = age
+  }
+  getAge(){
+    return this.age
+  }
+}
+```

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <canvas id="canvas1" width="500px" height="500px"></canvas>
+</body>
+<script>
+  const canvas1 = document.getElementById("canvas1")
+  const context1 = canvas1.getContext("2d")
+
+  /*渐变*/
+  const g1 = context1.createLinearGradient(0, 0, 0, 50);
+  g1.addColorStop(0, 'blue')
+  g1.addColorStop(1, 'pink')
+  context1.fillStyle = g1
+  context1.fillRect(0,0,60,50)
+
+  const g2 = context1.createRadialGradient(200, 120, 0, 200, 120, 50);
+  g2.addColorStop(0, 'blue')
+  g2.addColorStop(1, 'pink')
+  context1.fillStyle = g2
+  context1.arc(200, 120, 80, 0 , Math.PI*2, true);
+  context1.fill()
+</script>
+
+</html>
